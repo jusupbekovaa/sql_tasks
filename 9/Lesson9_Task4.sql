@@ -15,7 +15,7 @@ AS
 INSERT INTO InfoEmployees																			   
 (MaritalStatus, Locations, BirthDate, EmployeesID)
 VALUES
-('Неженат','Кие', '08/15/1975', 5);
+('Неженат','Бишкек', '08/15/1995', 5);
 
 SELECT * FROM InfoEmployees
 
