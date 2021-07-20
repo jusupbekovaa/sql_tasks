@@ -1,0 +1,52 @@
+CREATE TABLE Employees
+(                                      
+	EmployeesID int IDENTITY NOT NULL 
+    PRIMARY KEY,
+	Name varchar(25) NOT NULL,				  
+	Phone char(12) Not NULL UNIQUE
+)
+GO	
+
+SELECT * FROM sys.indexes
+WHERE object_id = (SELECT object_id FROM sys.tables
+				   WHERE name = 'Employees')
+GO	
+
+CREATE TABLE Salary
+(                                      
+	SalaryID int IDENTITY NOT NULL 
+    UNIQUE,				  
+	Post varchar(25) NOT NULL,
+	Salary money NOT NULL,
+	EmployeesID int NOT NULL						                        
+    FOREIGN KEY REFERENCES Employees(EmployeesID)
+)
+GO		
+
+
+SELECT * FROM sys.indexes
+WHERE object_id = (SELECT object_id FROM sys.tables
+				   WHERE name = 'Salary')
+GO	
+
+
+
+CREATE TABLE InfoEmployees
+(                                      
+	InfoEmployeesID int IDENTITY NOT NULL 
+    ,				  
+	MaritalStatus varchar(25) NOT NULL,
+	BirthDate date NOT NULL, 
+	Locations Varchar (30) NOT NULL,
+	EmployeesID int NOT NULL						                        
+    FOREIGN KEY REFERENCES Employees(EmployeesID) -- Связь Один ко Многим.
+)
+GO	
+
+
+SELECT * FROM sys.indexes
+WHERE object_id = (SELECT object_id FROM sys.tables
+				   WHERE name = 'InfoEmployees')
+GO	
+
+
